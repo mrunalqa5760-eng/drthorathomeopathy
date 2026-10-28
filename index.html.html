@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thorat Modern Homeopathy | Dr. Ranjit B. Thorat</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#10b981',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        },
+                        medical: {
+                            light: '#f8fafc',
+                            accent: '#0284c7',
+                            dark: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, .font-heading { font-family: 'Poppins', sans-serif; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 50%, #ffffff 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(13, 148, 136, 0.15), 0 10px 10px -5px rgba(13, 148, 136, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-600 selection:text-white">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-brand-700 text-white text-xs md:text-sm py-2 px-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-2">
+            <div class="flex items-center space-x-4">
+                <span><i class="fa-solid fa-clock text-brand-100 mr-1.5"></i> Daily Clinic Timing: 9:30 AM - 9:30 PM</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-location-dot text-brand-100 mr-1.5"></i> Daund & Online Consultations</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="tel:+917588072127" class="hover:underline flex items-center gap-1 font-semibold">
+                    <i class="fa-solid fa-phone text-xs"></i> +91 7588072127
+                </a>
+                <span class="opacity-40">|</span>
+                <a href="mailto:info@thoratmodernhomeopathy.com" class="hover:underline hidden sm:inline">Email Us</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 glass-nav border-b border-slate-100 shadow-sm transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-600 to-brand-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-leaf text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xl font-bold font-heading text-slate-900 leading-none">THORAT</span>
+                        <span class="block text-xs font-semibold text-brand-600 tracking-wider uppercase mt-1">Modern Homeopathy</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden lg:flex items-center space-x-8 font-medium text-slate-600">
+                    <a href="#about" class="hover:text-brand-600 transition-colors">About Dr. Thorat</a>
+                    <a href="#specialties" class="hover:text-brand-600 transition-colors">Treatments</a>
+                    <a href="#why-us" class="hover:text-brand-600 transition-colors">Why Choose Us</a>
+                    <a href="#testimonials" class="hover:text-brand-600 transition-colors">Testimonials</a>
+                    <a href="#contact" class="hover:text-brand-600 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="openBookingModal()" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-semibold rounded-xl text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/30 hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+                        <i class="fa-solid fa-calendar-check mr-2"></i> Book Appointment
+                    </button>
+                    <!-- Mobile Hamburger -->
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium hover:text-brand-600">About Dr. Thorat</a>
+            <a href="#specialties" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium hover:text-brand-600">Treatments</a>
+            <a href="#why-us" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium hover:text-brand-600">Why Choose Us</a>
+            <a href="#testimonials" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium hover:text-brand-600">Testimonials</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium hover:text-brand-600">Contact</a>
+            <button onclick="toggleMobileMenu(); openBookingModal();" class="w-full mt-2 py-3 bg-brand-600 text-white rounded-xl font-semibold shadow-md">
+                Book Appointment
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative hero-gradient pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Column -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-brand-50 border border-brand-200 text-brand-800 text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full shadow-sm">
+                        <span class="flex h-2 w-2 rounded-full bg-brand-500 animate-pulse"></span>
+                        <span>Advanced Scientific Homeopathy Care</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-slate-900 tracking-tight leading-tight">
+                        Modern Homeopathy for <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-teal-800">Lasting Health & Wellness</span>
+                    </h1>
+
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Experience gentle, root-cause healing tailored for you. Spearheaded by <strong>Dr. Ranjit B. Thorat</strong> with over 10+ years of dedicated expertise in treating chronic & acute health conditions naturally without side-effects.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
+                        <button onclick="openBookingModal()" class="px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-2xl shadow-lg shadow-brand-600/30 hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-calendar-plus text-lg"></i>
+                            Book Consultation Now
+                        </button>
+                        <a href="#specialties" class="px-8 py-4 bg-white hover:bg-slate-50 text-slate-700 font-semibold border border-slate-200 rounded-2xl shadow-sm hover:shadow transition-all flex items-center justify-center gap-2">
+                            Explore Treatments <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- Trust Micro-Badges -->
+                    <div class="pt-6 border-t border-slate-200/80 flex flex-wrap justify-center lg:justify-start items-center gap-6 text-xs sm:text-sm text-slate-500">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-brand-600 text-lg"></i> 100% Safe Remedies
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-user-doctor text-brand-600 text-lg"></i> Expert Diagnosis
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-laptop-medical text-brand-600 text-lg"></i> Online Consults Available
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Column: Doctor Profile Card -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative max-w-md mx-auto">
+                        <!-- Background Glow Elements -->
+                        <div class="absolute -top-6 -left-6 w-72 h-72 bg-brand-200/50 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="absolute -bottom-6 -right-6 w-72 h-72 bg-sky-200/50 rounded-full blur-3xl pointer-events-none"></div>
+
+                        <div class="relative bg-white rounded-3xl p-6 shadow-2xl border border-slate-100 overflow-hidden">
+                            <!-- Custom Dedicated Doctor Avatar Box (Replaces generic photo) -->
+                            <div class="relative rounded-2xl overflow-hidden bg-gradient-to-b from-brand-50 via-teal-50 to-white mb-6 p-6 border border-brand-100 flex flex-col items-center text-center">
+                                
+                                <div class="absolute top-3 right-3 bg-brand-600 text-white px-3 py-1 rounded-full text-[11px] font-bold shadow-sm">
+                                    <i class="fa-solid fa-user-check mr-1"></i> Verified Consultant
+                                </div>
+
+                                <!-- Doctor Custom Medical SVG Illustration -->
+                                <div class="w-36 h-36 rounded-full bg-gradient-to-tr from-brand-600 to-teal-700 p-1 shadow-xl mb-4 relative mt-2">
+                                    <div class="w-full h-full rounded-full bg-slate-900 flex items-center justify-center overflow-hidden relative">
+                                        <!-- Clean Stylized Doctor SVG Graphic -->
+                                        <svg class="w-28 h-28 text-brand-100" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="absolute bottom-1 right-1 w-8 h-8 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-white text-xs shadow" title="Available for Consultation">
+                                        <i class="fa-solid fa-stethoscope"></i>
+                                    </div>
+                                </div>
+
+                                <span class="text-xs font-bold text-brand-700 tracking-wide uppercase bg-brand-100/70 px-3 py-1 rounded-full">Chief Medical Practitioner</span>
+                            </div>
+
+                            <!-- Doctor Details -->
+                            <div class="text-center sm:text-left">
+                                <h2 class="text-2xl font-bold text-slate-900 font-heading">Dr. Ranjit B. Thorat</h2>
+                                <p class="text-brand-600 font-medium text-sm mt-0.5">BHMS | Consultant Homeopath</p>
+                                
+                                <p class="text-xs text-slate-500 mt-3 leading-relaxed">
+                                    Specializing in non-invasive, long-term therapeutic cures for chronic skin, hair, respiratory, and pediatric health issues.
+                                </p>
+
+                                <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+                                    <div>
+                                        <div class="flex text-amber-400 text-xs">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                        <span class="text-xs font-bold text-slate-700 mt-1 block">4.9/5 Rating (500+ Reviews)</span>
+                                    </div>
+                                    <button onclick="openBookingModal()" class="text-xs font-bold text-brand-600 hover:text-brand-700 underline">
+                                        View Schedule &rarr;
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK STATS RIBBON -->
+    <section class="bg-gradient-to-r from-brand-700 via-brand-600 to-teal-800 text-white py-10 shadow-lg relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x-0 md:divide-x divide-brand-500/40">
+                <div class="p-2">
+                    <p class="text-3xl sm:text-4xl font-extrabold font-heading">10+</p>
+                    <p class="text-xs sm:text-sm font-medium text-brand-100 mt-1">Years Experience</p>
+                </div>
+                <div class="p-2">
+                    <p class="text-3xl sm:text-4xl font-extrabold font-heading">5,000+</p>
+                    <p class="text-xs sm:text-sm font-medium text-brand-100 mt-1">Happy Recovered Patients</p>
+                </div>
+                <div class="p-2">
+                    <p class="text-3xl sm:text-4xl font-extrabold font-heading">100%</p>
+                    <p class="text-xs sm:text-sm font-medium text-brand-100 mt-1">Safe Cures & No Side Effects</p>
+                </div>
+                <div class="p-2">
+                    <p class="text-3xl sm:text-4xl font-extrabold font-heading">2+</p>
+                    <p class="text-xs sm:text-sm font-medium text-brand-100 mt-1">Clinic Locations & Tele-Consult</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TREATMENTS WE SPECIALIZE IN -->
+    <section id="specialties" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-600 font-bold text-xs uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-full border border-brand-200">Our Clinical Expertise</span>
+                <h2 class="text-3xl sm:text-4xl font-bold font-heading text-slate-900 mt-3">Specialized Homeopathic Cures</h2>
+                <p class="text-slate-600 mt-3 text-base">We provide personalized classical & modern homeopathic remedies engineered to cure the root cause of ailments without unpleasant side-effects.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Specialty Card 1 -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm card-hover relative group">
+                    <div class="w-14 h-14 rounded-2xl bg-teal-50 text-brand-600 flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-hand-holding-medical"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 font-heading mb-3">Skin & Hair Disorders</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        Effective long-term relief for Psoriasis, Eczema, Acne, Vitiligo, Chronic Urticaria, Hair Loss, and Alopecia Aerata.
+                    </p>
+                    <button onclick="openBookingModal('Skin & Hair Disorders')" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700">
+                        Consult for Skin Care <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Specialty Card 2 -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm card-hover relative group">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl mb-6 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 font-heading mb-3">Chronic & Autoimmune</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        Holistic treatments for Thyroid Imbalances, Arthritis, Joint Pain, Sciatica, Migraines, and Diabetes management.
+                    </p>
+                    <button onclick="openBookingModal('Chronic Disorders')" class="inline-flex items-center text-sm font-semibold text-sky-600 hover:text-sky-700">
+                        Consult for Chronic Illness <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Specialty Card 3 -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm card-hover relative group">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-lungs"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 font-heading mb-3">Respiratory & Allergies</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        Permanent immunity boosting against Allergic Rhinitis, Asthma, Bronchitis, Sinusitis, and Frequent Coughs.
+                    </p>
+                    <button onclick="openBookingModal('Respiratory Health')" class="inline-flex items-center text-sm font-semibold text-emerald-600 hover:text-emerald-700">
+                        Consult for Allergies <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Specialty Card 4 -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm card-hover relative group">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-6 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-stethoscope"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 font-heading mb-3">Digestive Health</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        Gentle natural remedies for Acidity, IBS (Irritable Bowel Syndrome), Constipation, Fatty Liver, and Piles.
+                    </p>
+                    <button onclick="openBookingModal('Digestive Care')" class="inline-flex items-center text-sm font-semibold text-amber-600 hover:text-amber-700">
+                        Consult for Digestive Health <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Specialty Card 5 -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm card-hover relative group">
+                    <div class="w-14 h-14 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-2xl mb-6 group-hover:bg-rose-600 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-child"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 font-heading mb-3">Pediatric & Women's Care</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        Child immunity development, Tonsillitis, PCOD/PCOS, Menstrual Irregularities, and Hormonal balance.
+                    </p>
+                    <button onclick="openBookingModal('Pediatric & Women Care')" class="inline-flex items-center text-sm font-semibold text-rose-600 hover:text-rose-700">
+                        Consult for Family Care <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Specialty Card 6: Customized Consultation -->
+                <div class="bg-gradient-to-br from-brand-600 to-brand-800 rounded-2xl p-8 text-white shadow-md flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-white text-xl mb-4">
+                            <i class="fa-solid fa-notes-medical"></i>
+                        </div>
+                        <h3 class="text-xl font-bold font-heading mb-2">Not Sure About Your Condition?</h3>
+                        <p class="text-brand-100 text-sm leading-relaxed">
+                            Connect directly with Dr. Ranjit Thorat for a initial diagnosis and individualized guidance.
+                        </p>
+                    </div>
+                    <button onclick="openBookingModal('General Health Concern')" class="mt-8 w-full py-3 bg-white text-brand-800 rounded-xl font-semibold shadow hover:bg-brand-50 transition-colors">
+                        Schedule Evaluation
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US / VISION & MISSION -->
+    <section id="why-us" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                
+                <div class="relative">
+                    <div class="relative z-10 rounded-3xl overflow-hidden shadow-xl border border-slate-100 bg-gradient-to-br from-brand-700 to-teal-900 p-8 sm:p-12 text-white">
+                        <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center text-brand-200 text-3xl mb-6">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold font-heading mb-4">Scientific & Personalized Homeopathy</h3>
+                        <p class="text-brand-100 text-sm leading-relaxed mb-6">
+                            Under the leadership of <strong>Dr. Ranjit B. Thorat</strong>, every case is evaluated with constitutional analysis to activate the body's natural defense mechanism.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 text-xs font-medium border-t border-brand-500/30 pt-6">
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-circle-check text-brand-300"></i>
+                                <span>No Side Effects</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-circle-check text-brand-300"></i>
+                                <span>Root Cause Healing</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-circle-check text-brand-300"></i>
+                                <span>Online Consultation</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-circle-check text-brand-300"></i>
+                                <span>Courier Medicines</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Badge Overlay -->
+                    <div class="absolute -bottom-6 -right-6 bg-brand-600 text-white p-6 rounded-2xl shadow-xl hidden sm:block">
+                        <p class="text-2xl font-bold font-heading">100%</p>
+                        <p class="text-xs text-brand-100">Safe Remedies for<br>Infants & Adults</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <span class="text-brand-600 font-bold text-xs uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-full border border-brand-200">Why Patients Trust Us</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold font-heading text-slate-900 leading-tight">
+                        Root-Cause Cures Delivered With Modern Clinical Precision
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        At Thorat Modern Homeopathy, we move beyond quick suppression. We evaluate your mental, emotional, and physical constitutions to select highly specific, potentized homeopathic remedies.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-base">Individualized Case Analysis</h4>
+                                <p class="text-slate-600 text-sm mt-0.5">In-depth initial consultation to understand patient history and underlying triggers.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-base">Zero Side Effects & Non-Addictive</h4>
+                                <p class="text-slate-600 text-sm mt-0.5">Gentle natural medicines safe for infants, pregnant women, and elderly individuals.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-base">Doorstep Courier Medicine Delivery</h4>
+                                <p class="text-slate-600 text-sm mt-0.5">Online consultation followed by medicine dispatch across India & globally.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS & VIDEO REVIEWS -->
+    <section id="testimonials" class="py-20 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-600 font-bold text-xs uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-full border border-brand-200">Patient Stories</span>
+                <h2 class="text-3xl sm:text-4xl font-bold font-heading text-slate-900 mt-3">Real Healing, Real Results</h2>
+                <p class="text-slate-600 mt-3 text-base">Discover how Dr. Ranjit B. Thorat has helped patients overcome chronic ailments permanently.</p>
+            </div>
+
+            <!-- Reviews Grid -->
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Review 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic leading-relaxed">
+                            "I suffered from severe chronic eczema for over 3 years. After starting Dr. Thorat's treatment, my skin cleared up within 4 months. He is extremely attentive and patient!"
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center text-sm">
+                            PS
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">Pooja S.</p>
+                            <p class="text-xs text-slate-500">Skin Treatment Patient</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic leading-relaxed">
+                            "My 6-year-old son had continuous allergic rhinitis and tonsillitis issues. Modern Homeopathy worked wonders for his immunity. Highly recommended doctor in Daund!"
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-sky-600 text-white font-bold flex items-center justify-center text-sm">
+                            AK
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">Amol K.</p>
+                            <p class="text-xs text-slate-500">Pediatric Care Patient</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic leading-relaxed">
+                            "I consulted online from Mumbai for severe gastric acidity and IBS. The medicine courier arrived promptly and my digestion is back to normal now."
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm">
+                            RD
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">Rahul D.</p>
+                            <p class="text-xs text-slate-500">Online Consultation</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE APPOINTMENT MODAL -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-100 overflow-hidden transform transition-all">
+            
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-brand-700 to-brand-600 text-white p-6 relative">
+                <button onclick="closeBookingModal()" class="absolute top-5 right-5 text-white/80 hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <h3 class="text-2xl font-bold font-heading">Book an Appointment</h3>
+                <p class="text-brand-100 text-xs mt-1">Dr. Ranjit B. Thorat | Thorat Modern Homeopathy</p>
+            </div>
+
+            <!-- Booking Form -->
+            <form id="appointmentForm" onsubmit="handleAppointmentSubmit(event)" class="p-6 space-y-4">
+                
+                <!-- Consultation Type -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Consultation Mode</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="border border-slate-200 p-3 rounded-xl flex items-center space-x-2 cursor-pointer hover:border-brand-600 transition-colors">
+                            <input type="radio" name="consultType" value="In-Clinic Daund" checked class="text-brand-600 focus:ring-brand-500">
+                            <span class="text-sm font-medium text-slate-800"><i class="fa-solid fa-hospital text-brand-600 mr-1"></i> In-Clinic (Daund)</span>
+                        </label>
+                        <label class="border border-slate-200 p-3 rounded-xl flex items-center space-x-2 cursor-pointer hover:border-brand-600 transition-colors">
+                            <input type="radio" name="consultType" value="Online Video Consult" class="text-brand-600 focus:ring-brand-500">
+                            <span class="text-sm font-medium text-slate-800"><i class="fa-solid fa-video text-sky-600 mr-1"></i> Online Consult</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Patient Name & Phone -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Full Name</label>
+                        <input type="text" id="patientName" required placeholder="John Doe" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Phone Number</label>
+                        <input type="tel" id="patientPhone" required placeholder="+91 9876543210" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600">
+                    </div>
+                </div>
+
+                <!-- Health Concern -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Specialty / Treatment Needed</label>
+                    <select id="healthConcern" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600">
+                        <option value="General Consultation">General Health Consultation</option>
+                        <option value="Skin & Hair Disorders">Skin & Hair Disorders</option>
+                        <option value="Chronic Disorders">Chronic & Autoimmune Disorders</option>
+                        <option value="Respiratory Health">Respiratory & Allergies</option>
+                        <option value="Digestive Care">Digestive Health</option>
+                        <option value="Pediatric & Women Care">Pediatric & Women's Care</option>
+                    </select>
+                </div>
+
+                <!-- Preferred Date & Time -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Preferred Date</label>
+                        <input type="date" id="appointmentDate" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Time Slot</label>
+                        <select id="appointmentTime" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600">
+                            <option value="10:00 AM - 01:00 PM">Morning (10 AM - 1 PM)</option>
+                            <option value="05:00 PM - 09:30 PM">Evening (5 PM - 9:30 PM)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl shadow-lg shadow-brand-600/30 transition-all mt-4 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i> Confirm Booking Request
+                </button>
+                <p class="text-center text-xs text-slate-400">Our clinic staff will confirm your slot via call / WhatsApp.</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- SUCCESS NOTIFICATION TOAST -->
+    <div id="toast" class="fixed bottom-24 right-6 z-50 hidden bg-slate-900 text-white px-6 py-4 rounded-2xl shadow-2xl border border-slate-700 flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white shrink-0">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div>
+            <h4 class="font-bold text-sm">Appointment Requested!</h4>
+            <p class="text-xs text-slate-300" id="toastMessage">We will get back to you shortly.</p>
+        </div>
+    </div>
+
+    <!-- FOOTER & LOCATION -->
+    <footer id="contact" class="bg-slate-900 text-slate-300 pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Clinic Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white font-bold">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+                        <span class="text-lg font-bold font-heading text-white">Thorat Modern Homeopathy</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Dedicated to providing genuine scientific homeopathic treatment for acute and long-standing chronic diseases with personalized care.
+                    </p>
+                    <p class="text-xs text-brand-400 font-semibold">
+                        Dr. Ranjit B. Thorat (BHMS)
+                    </p>
+                </div>
+
+                <!-- Clinic Timing & Hours -->
+                <div>
+                    <h4 class="text-white font-bold font-heading text-sm uppercase tracking-wider mb-4">Clinic Hours</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex justify-between border-b border-slate-800 pb-2">
+                            <span>Monday - Saturday:</span>
+                            <span class="text-white font-semibold">9:30 AM - 9:30 PM</span>
+                        </li>
+                        <li class="flex justify-between border-b border-slate-800 pb-2">
+                            <span>Sunday:</span>
+                            <span class="text-brand-400 font-semibold">Prior Appointment Only</span>
+                        </li>
+                        <li class="pt-1 text-slate-400">
+                            <i class="fa-solid fa-circle-info text-brand-500 mr-1"></i> Emergency consultations available on call.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Quick Contact -->
+                <div>
+                    <h4 class="text-white font-bold font-heading text-sm uppercase tracking-wider mb-4">Contact Clinic</h4>
+                    <ul class="space-y-3 text-xs">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-phone text-brand-500 mt-1"></i>
+                            <div>
+                                <p class="text-slate-400">Phone & WhatsApp:</p>
+                                <a href="tel:+917588072127" class="text-white font-bold hover:text-brand-400">+91 7588072127</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-envelope text-brand-500 mt-1"></i>
+                            <div>
+                                <p class="text-slate-400">Email:</p>
+                                <a href="mailto:info@thoratmodernhomeopathy.com" class="text-white hover:text-brand-400">info@thoratmodernhomeopathy.com</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Address & Map Link -->
+                <div>
+                    <h4 class="text-white font-bold font-heading text-sm uppercase tracking-wider mb-4">Location (Daund)</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        Thorat Modern Homeopathy Clinic, Main Market Road, Near City Hospital, Daund, Maharashtra - 413801.
+                    </p>
+                    <a href="https://maps.google.com" target="_blank" class="inline-flex items-center text-xs font-bold text-brand-400 hover:text-brand-300">
+                        <i class="fa-solid fa-map-location-dot mr-1.5"></i> Get Directions on Google Maps
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="pt-8 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; <span id="currentYear"></span> Thorat Modern Homeopathy. All Rights Reserved.</p>
+                <p class="text-slate-500">Website Redesign Demo Concept</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING CONTACT WIDGETS -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col space-y-3">
+        <!-- WhatsApp Direct -->
+        <a href="https://wa.me/917588072127?text=Hello%20Dr.%20Thorat,%20I%20would%20like%20to%20book%20a%20consultation." 
+           target="_blank" 
+           class="w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-110 group relative"
+           title="Chat on WhatsApp">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+            <span class="absolute right-16 bg-slate-900 text-white text-xs font-bold py-1 px-3 rounded-lg shadow whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+                WhatsApp Us
+            </span>
+        </a>
+
+        <!-- Call Button -->
+        <a href="tel:+917588072127" 
+           class="w-14 h-14 bg-brand-600 hover:bg-brand-700 text-white rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-110 group relative"
+           title="Call Now">
+            <i class="fa-solid fa-phone text-xl"></i>
+            <span class="absolute right-16 bg-slate-900 text-white text-xs font-bold py-1 px-3 rounded-lg shadow whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+                Call Clinic
+            </span>
+        </a>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Open Booking Modal
+        function openBookingModal(specialtyName = null) {
+            const modal = document.getElementById('bookingModal');
+            if (specialtyName) {
+                const select = document.getElementById('healthConcern');
+                for (let i = 0; i < select.options.length; i++) {
+                    if (select.options[i].text.includes(specialtyName) || select.options[i].value === specialtyName) {
+                        select.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+            modal.classList.remove('hidden');
+            // Set min date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('appointmentDate').min = today;
+            document.getElementById('appointmentDate').value = today;
+        }
+
+        // Close Booking Modal
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('hidden');
+        }
+
+        // Handle Appointment Form Submission
+        function handleAppointmentSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('patientName').value;
+            const phone = document.getElementById('patientPhone').value;
+            const date = document.getElementById('appointmentDate').value;
+
+            closeBookingModal();
+
+            // Show Toast Notification
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.textContent = `Thank you, ${name}! Slot requested for ${date}.`;
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 5000);
+
+            // Reset form
+            document.getElementById('appointmentForm').reset();
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('bookingModal');
+            if (event.target === modal) {
+                closeBookingModal();
+            }
+        }
+    </script>
+</body>
+</html>
